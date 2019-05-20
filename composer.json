@@ -15,7 +15,6 @@
         "php": "^7.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "maintainerati/bikeshed": "dev-development@dev",
         "maintainerati/bikeshed-bundle": "dev-development@dev",
         "symfony/console": "^4.3",
         "symfony/dotenv": "^4.3",
@@ -29,7 +28,7 @@
         "friendsofphp/php-cs-fixer": "^2.15",
         "psalm/plugin-phpunit": "^0.5.5",
         "symfony/debug-bundle": "^4.3",
-        "symfony/http-client": "^4.3@beta",
+        "symfony/http-client": "^4.3",
         "symfony/profiler-pack": "^1.0",
         "symfony/test-pack": "^1.0",
         "symfony/web-server-bundle": "^4.3",
@@ -60,10 +59,12 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "Maintainerati\\Bikeshed\\Util\\AssetInstall::run"
         ],
         "post-update-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "Maintainerati\\Bikeshed\\Util\\AssetInstall::run"
         ],
         "lint": "vendor/bin/php-cs-fixer fix --show-progress=dots -v",
         "static": "vendor/bin/psalm --find-dead-code",

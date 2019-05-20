@@ -197,9 +197,6 @@
     "maintainerati/bikeshed-bundle": {
         "version": "dev-development"
     },
-    "muglug/package-versions-56": {
-        "version": "1.2.4"
-    },
     "myclabs/deep-copy": {
         "version": "1.9.1"
     },
@@ -253,9 +250,6 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "0.4.0"
-    },
-    "phpmyadmin/sql-parser": {
-        "version": "v4.3.1"
     },
     "phpspec/prophecy": {
         "version": "1.8.0"

@@ -2,23 +2,29 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
+
+        bikeshed:
             anonymous: true
+            guard:
+                authenticators:
+                    - Maintainerati\Bikeshed\Security\FormAuthenticator
+                entry_point: Maintainerati\Bikeshed\Security\FormAuthenticator
+                provider: bikeshed_user_provider
+            remember_me:
+                name: maintainerati
+                secret:   '%kernel.secret%'
+                lifetime: 604800
+                secure: true
+                remember_me_parameter: remember
+            logout:
+                path:   bikeshed_logout
 
-            # activate different ways to authenticate
-
-            # http_basic: true
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: true
-            # https://symfony.com/doc/current/security/form_login_setup.html
-
-    # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+    # - { path: ^/admin, roles: ROLE_ADMIN }
+    # - { path: ^/profile, roles: ROLE_USER }
